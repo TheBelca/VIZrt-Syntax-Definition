@@ -1,0 +1,12 @@
+%YAML 1.2
+---
+# http://www.sublimetext.com/docs/3/syntax.html
+name: VIZrt
+comment: "VIZrt Syntax. Version 1.0"
+file_extensions: [viz]
+scope: source.viz
+contexts:
+  main:
+
+    - match: /'.*
+      scope: comment.viz
