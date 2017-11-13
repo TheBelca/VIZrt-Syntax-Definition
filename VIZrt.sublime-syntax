@@ -10,3 +10,8 @@ contexts:
 
     - match: /'.*
       scope: comment.viz
+
+    - match: \b(if|else|elseif|end if)\b
+      scope: keyword.control.viz
+
+      
