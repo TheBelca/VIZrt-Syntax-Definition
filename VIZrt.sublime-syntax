@@ -8,10 +8,31 @@ scope: source.viz
 contexts:
   main:
 
-    - match: /'.*
+    - match: \'.*
       scope: comment.viz
 
-    - match: \b(if|else|elseif|end if)\b
-      scope: keyword.control.viz
 
-      
+    - match: \b(if|then|else|elseif|end if|sub|end sub)\b
+      scope: keyword.control.viz
+    - match: '"'
+      push: string
+
+    - match: \d
+      scope: constant.numeric.viz
+
+    - match: \(
+      push: brackets
+    - match: \)
+      scope: invalid.illegal.stray-bracket-end
+
+  string:
+    - meta_scope: string.quoted.doble.viz
+    - match: \'.*
+      scope: constant.character.escape.viz
+    - match: '"'
+      pop: true
+
+  brackets:
+    - match: \)
+      pop: true
+    - include: main
